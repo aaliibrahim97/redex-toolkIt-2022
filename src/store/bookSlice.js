@@ -110,6 +110,15 @@ import { logInsert } from "./reportSlice";
 const bookSlice = createSlice({
   name: "book",
   initialState: { books: [], isLoading: false ,isError:null, bookInfo:[] },
+  reducers: {
+    resetBooks:(state)=>{
+      state.books = []
+      state.isLoading = false
+      state.isError = null
+      state.bookInfo = []
+      console.log('REMOVED')
+    }
+  },
   extraReducers: {
     
     //Get Books
@@ -123,15 +132,18 @@ const bookSlice = createSlice({
       state.books = action.payload;
     },
     [getBooks.rejected]: (state, action) => {
-      state.isLoading = false;
-      state.isError = action.payload
+      
+      state.isLoading = false; 
+
+      state.isError = action.payload;
+
     },
 
     //Post Books
     [postBooks.pending]: (state, action) => {
         state.isLoading = true;
         state.isError = null;
-      },
+    },
     [postBooks.fulfilled]: (state, action) => {
         state.isLoading = false;
         state.isError = null;
@@ -174,5 +186,7 @@ const bookSlice = createSlice({
   
   },
 });
+
+export const { resetBooks } = bookSlice.actions;
 
 export default bookSlice.reducer;

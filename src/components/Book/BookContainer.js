@@ -15,7 +15,7 @@ const PostContainer = () => {
   },[dispatch])
 
   const { isLoading,books } = useSelector((state)=>{
-    console.log(state)
+    // console.log(state)
     return state.books
   })
 

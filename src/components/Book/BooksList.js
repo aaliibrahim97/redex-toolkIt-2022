@@ -1,8 +1,16 @@
 import React, { Fragment } from "react";
 import "./book.css";
 
-const BooksList = ({ loadingStatus, data, auth, dispatch, deleteBook,readBook,getBookId }) => {
-  console.log(loadingStatus, data);
+const BooksList = ({
+  loadingStatus,
+  data,
+  auth,
+  dispatch,
+  deleteBook,
+  readBook,
+  getBookId,
+}) => {
+  // console.log(loadingStatus, data);
 
   // data && => if (data)
   const bookList =
@@ -10,37 +18,35 @@ const BooksList = ({ loadingStatus, data, auth, dispatch, deleteBook,readBook,ge
       ? data.map((i) => (
           <li
             key={i.id}
-            className="list-group-item d-flex justify-content-between align-items-center"
+            class="py-4 px-4 w-100 rounded-full border-b bg-gray-100 hover:bg-gray-200 border-gray-200 dark:border-gray-600 rounded-full my-2 border border-gray-200"
           >
-            <div>{i.title}</div>
-            <div className="btn-group" role="group">
-              
-            {
-              // GET INFO BOOK THROUGH CREATEASYNCTHUNK
-              // <button
-              //   type="button"
-              //   className="btn btn-primary"
-              //   disabled={!auth}
-              //   onClick={() =>
-              //     dispatch(readBook(i))
-              //     .unwrap()
-              //     .then((originalPromiseResult) => {
-              //       // handle result here
-              //       console.log(originalPromiseResult)
-              //     })
-              //     .catch((rejectedValueOrSerializedError) => {
-              //       // handle error here
-              //       console.log(rejectedValueOrSerializedError)
-              //     })
-              //   }
-              // >
-              //   Read
-              // </button>
-            }
-            
+            <p class="w-50 d-inline">{i.title}</p>
+            <div class="float-right relative bottom-2">
+              {
+                // GET INFO BOOK THROUGH CREATEASYNCTHUNK
+                // <button
+                //   type="button"
+                //   className="btn btn-primary"
+                //   disabled={!auth}
+                //   onClick={() =>
+                //     dispatch(readBook(i))
+                //     .unwrap()
+                //     .then((originalPromiseResult) => {
+                //       // handle result here
+                //       console.log(originalPromiseResult)
+                //     })
+                //     .catch((rejectedValueOrSerializedError) => {
+                //       // handle error here
+                //       console.log(rejectedValueOrSerializedError)
+                //     })
+                //   }
+                // >
+                //   Read
+                // </button>
+              }
               <button
                 type="button"
-                className="btn btn-primary"
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full mx-1"
                 disabled={!auth}
                 onClick={() => getBookId(i.id)}
               >
@@ -49,19 +55,19 @@ const BooksList = ({ loadingStatus, data, auth, dispatch, deleteBook,readBook,ge
 
               <button
                 type="button"
-                className="btn btn-danger"
+                class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full mx-1"
                 disabled={!auth}
                 onClick={() =>
                   dispatch(deleteBook(i))
-                  .unwrap()
-                  .then((originalPromiseResult) => {
-                    // handle result here
-                    console.log(originalPromiseResult)
-                  })
-                  .catch((rejectedValueOrSerializedError) => {
-                    // handle error here
-                    console.log(rejectedValueOrSerializedError)
-                  })
+                    .unwrap()
+                    .then((originalPromiseResult) => {
+                      // handle result here
+                      console.log(originalPromiseResult);
+                    })
+                    .catch((rejectedValueOrSerializedError) => {
+                      // handle error here
+                      console.log(rejectedValueOrSerializedError);
+                    })
                 }
               >
                 Delete
@@ -73,14 +79,16 @@ const BooksList = ({ loadingStatus, data, auth, dispatch, deleteBook,readBook,ge
 
   return (
     <Fragment>
-      <h2>Books List</h2>
+      <h2 class="font-bold text-xl font-sans my-2">Books List</h2>
       {loadingStatus ? (
         <div>
           <p className="loading">Loading...</p>
         </div>
       ) : (
         <div>
-          <ul className="list-group">{bookList}</ul>
+          <ul class="w-100 text-sm font-medium text-gray-900 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+            {bookList}
+          </ul>
         </div>
       )}
     </Fragment>

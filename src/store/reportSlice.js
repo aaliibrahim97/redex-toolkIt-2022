@@ -6,10 +6,13 @@ const reportSlice = createSlice({
     reducers:{
         logInsert:(state,action)=>{
             state.logs.push(action.payload)
+        },
+        resetLogs:(state)=>{
+            state.logs = []
         }
     },
   });
   
-  export const {logInsert} = reportSlice.actions;
+  export const { logInsert, resetLogs } = reportSlice.actions;
 
   export default reportSlice.reducer;

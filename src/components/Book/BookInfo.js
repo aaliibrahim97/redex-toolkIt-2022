@@ -1,20 +1,20 @@
 import React, { Fragment } from "react";
 
 const BookInfo = ({ auth,bookInfo }) => {
-  console.log(bookInfo);
+  // console.log(bookInfo);
   return (
     <Fragment>
-      <h2>Book Details</h2>
+      <h2 class="font-bold text-xl font-sans my-2">Book Details</h2>
 
       { auth && Object.keys(bookInfo).length > 0 ? (
-        <div>
-          <p className="fw-bold">Title:{bookInfo.title}</p>
-          <p className="fw-light">Description:{bookInfo.description}</p>
-          <p className="fw-light">Inserted By:{bookInfo.userName}</p>
-          <p className="fst-italic">Price:{bookInfo.price}</p>
-        </div>
+        <ul class="py-4 px-4 my-3 rounded-3xl border-b bg-gray-100 font-sans">
+          <li class="border-b py-2 border-gray-200 text-lg"> <b>Title:</b> {bookInfo.title}</li>
+          <li class="border-b py-2 border-gray-200 text-lg"> <b>Description:</b> {bookInfo.description}</li>
+          <li class="border-b py-2 border-gray-200 text-lg"> <b>Inserted By:</b> {bookInfo.userName}</li>
+          <li class="py-2 border-gray-200"> <b>Price:</b> {bookInfo.price}</li>
+        </ul>
       ) : (
-        <div className="alert alert-secondary" role="alert">
+        <div class=" alert alert-secondary rounded-full" role="alert">
           There is no post selected yet. Please select!
         </div>
       )}
