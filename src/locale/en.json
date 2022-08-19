@@ -21,5 +21,6 @@
     "no_post":"There is no post selected yet. Please select!",
     "download":"Download",
     "file_err":"File's Type must be PDF!",
-    "upload_file":"Add an Attachment (Optional)"
+    "upload_file":"Add an Attachment (Optional)",
+    "no_file":"No File Uploaded Yet!"
 }

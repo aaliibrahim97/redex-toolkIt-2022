@@ -39,7 +39,7 @@ const Addform = () => {
   });
 
   const [file, setFile] = useState(null);
-  const [showFile, setShowFile] = useState();
+  const [showFile, setShowFile] = useState(null);
   const [showLabel, setLabel] = useState("Upload or drop a file right here");
   const [showTypeErr, setshowTypeErr] = useState(false);
 
@@ -66,7 +66,8 @@ const Addform = () => {
       setshowTypeErr(true);
     } else {
       setShowFile(x);
-      setLabel("Uploaded Successfully!")
+
+      setLabel("Uploaded Successfully!");
       getBase64(x)
         .then((result) => {
           // console.log("File Is", file);
@@ -121,8 +122,9 @@ const Addform = () => {
         // setDescription('')
         reset();
         setShowFile(null);
+        setFile(null);
         setLoaded(true);
-        setLabel("Upload or drop a file right here")
+        setLabel("Upload or drop a file right here");
         setTimeout(() => {
           setLoaded(false);
         }, 3000);
@@ -195,7 +197,6 @@ const Addform = () => {
             {t("insert_book")}
           </h2>
           <form onSubmit={handleForm}>
-
             <div className="form-group">
               <label
                 htmlFor="title"
@@ -291,12 +292,10 @@ const Addform = () => {
             }
 
             <div class="flex justify-center items-center w-full pb-2">
-            <label
-            className="block text-sm font-medium text-gray-700 px-3"
-            >
-              {t('upload_file')} : 
-            </label>
-            <FileUploader
+              <label className="block text-sm font-medium text-gray-700 px-3 whitespace-nowrap">
+                {t("upload_file")} :
+              </label>
+              <FileUploader
                 multiple={false}
                 handleChange={handleFileChangeX}
                 name="file"
@@ -307,7 +306,7 @@ const Addform = () => {
               />
 
               {showFile ? (
-                <p class="px-2">
+                <p class="px-2 whitespace-nowrap	">
                   <span class="text-green-600">
                     {showFile.name}
                     <svg
@@ -333,7 +332,7 @@ const Addform = () => {
                       strokeWidth={2}
                       onClick={() => {
                         setShowFile(null);
-                        setLabel("Upload or drop a file right here")
+                        setLabel("Upload or drop a file right here");
                       }}
                     >
                       <path
@@ -345,7 +344,9 @@ const Addform = () => {
                   </span>
                 </p>
               ) : (
-                <p class="px-2 text-yellow-600">No files uploaded yet</p>
+                <p class="px-2 text-yellow-600 whitespace-nowrap">
+                  {t("no_file")}
+                </p>
               )}
             </div>
 
