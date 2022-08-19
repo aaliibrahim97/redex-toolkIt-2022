@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import { useTranslation } from "react-i18next";
 import "./book.css";
 
 const BooksList = ({
@@ -10,6 +11,9 @@ const BooksList = ({
   readBook,
   getBookId,
 }) => {
+
+  const { t, i18n } = useTranslation();
+
   // console.log(loadingStatus, data);
 
   // data && => if (data)
@@ -50,7 +54,7 @@ const BooksList = ({
                 disabled={!auth}
                 onClick={() => getBookId(i.id)}
               >
-                Read
+                {t("read")}
               </button>
 
               <button
@@ -70,7 +74,7 @@ const BooksList = ({
                     })
                 }
               >
-                Delete
+              {t("delete")}
               </button>
             </div>
           </li>
@@ -79,10 +83,10 @@ const BooksList = ({
 
   return (
     <Fragment>
-      <h2 class="font-bold text-xl font-sans my-2">Books List</h2>
+      <h2 class="font-bold text-xl font-sans my-2">{t("book_list")}</h2>
       {loadingStatus ? (
         <div>
-          <p className="loading">Loading...</p>
+          <p className="loading">{t("loading")}</p>
         </div>
       ) : (
         <div>
